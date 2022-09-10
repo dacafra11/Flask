@@ -3,6 +3,7 @@ import os
 import pandas as pd
 import numpy as np
 import pickle
+import git
 
 os.chdir (os.path.dirname(__file__))
 
@@ -11,7 +12,18 @@ app.config['DEBUG'] = True
 
 @app.route('/',methods=['GET'])
 def hello():
-    return "Mi primera API Flask"
+    return "Mi primera API Flask cutre act"
+
+# funcion para hacer pull commit automatico entre git y python anyware
+@app.route('/git_update', methods=['POST'])
+def git_update():
+    repo = git.Repo('./Flask')
+    origin = repo.remotes.origin
+    repo.create_head('main',
+                     origin.refs.main).set_tracking_branch(origin.refs.main).checkout()
+    origin.pull()
+    return '', 200
+
 
 @app.route('/api/v1/predict' , methods=['GET'])
 def predict():
