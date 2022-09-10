@@ -12,7 +12,7 @@ app.config['DEBUG'] = True
 
 @app.route('/',methods=['GET'])
 def hello():
-    return "Mi primera API Flask cutre act_desde github"
+    return "Mi primera API Flask cutre act_desde github 23"
 
 # funcion para hacer pull commit automatico entre git y python anyware
 @app.route('/git_update', methods=['POST'])
