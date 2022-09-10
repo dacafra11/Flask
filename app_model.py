@@ -44,5 +44,6 @@ def retrain():
     pickle.dump(model, open('ad_model.pkl', 'wb'))
 
     return "Model retrained. New evaluation metric RMSE: " + str(np.sqrt(mean_squared_error(y_test, model.predict(X_test))))
+if __name__ == '__main__':
 
-app.run()
+    app.run()
